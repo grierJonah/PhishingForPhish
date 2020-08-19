@@ -1,0 +1,31 @@
+{
+  "name": "PhishingForPhish",
+  "version": "1.0",
+  "description": "**Quit making me verify myself! Are you even who you say you are??** Anti-phishing plugin designed to put the power back in the people's hands.",
+  "permissions": [
+    "activeTab",
+    "<all_urls>",
+    "tabs"
+  ],
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": ["https://*.gov/*",
+      "http://*.gov/*",
+      "http://www.myflorida.com/*",
+      "https://cic.ndu.edu/*",
+      "https://www.state.nj.us/*"],
+    "js": ["app.js"],
+    "css": ["website.css"],
+    "run_at": "document_end"
+  }],
+  "browser_action": {
+    "default_icon": "pictures/half_transparent.png",
+    "default_popup": "popup.html",
+    "default_title": "PFP"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
+}
